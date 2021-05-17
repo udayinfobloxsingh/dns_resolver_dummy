@@ -1,0 +1,26 @@
+syntax = "proto3";
+package dns;
+option go_package = "./dnspb";
+
+service DnsService {
+    rpc DNSauthenticate(DomainReq) returns (DomainRes);
+}
+
+
+message DomainReq {
+    string domainName = 1;    
+}
+
+message DomainRes {
+    enum Action {
+
+        DROP = 0;
+        BLOCK = 1;
+        ALLOW = 2;
+    }
+  Action action = 1;
+}
+
+
+
+
